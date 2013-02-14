@@ -7,6 +7,7 @@ module TomAndJerry
     MAP_SIZE_Y = 12
     MAPS = ["map01.txt", "map02.txt"]
     LIVES = 3
+    DIRECTIONS = ["left", "right", "up", "down"]
     SCREEN_SIZE_X = 640
     SCREEN_SIZE_Y = 480
     FRAMERATE = 30
