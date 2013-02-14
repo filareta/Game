@@ -1,5 +1,6 @@
 require './map'
 require './board'
+require './tests/test_game'
 
 module TomAndJerry
 
@@ -26,8 +27,8 @@ module TomAndJerry
       ConsoleGame.new(playground, l, false)
     end
 
-    def player_move(player_direction)
-      playground.jerry.choose_direction(player_direction)
+    def player_move(direction)
+      playground.jerry.choose_direction(direction)
     end
 
     def enemies_move
