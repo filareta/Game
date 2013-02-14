@@ -50,7 +50,7 @@ module TomAndJerry
       elsif @board[@jerry.y][@jerry.x] == 'C'
         @board[@jerry.y][@jerry.x] = 'J'
         @jerry.score += 50
-        puts @targets.delete([@jerry.x, @jerry.y])
+        @targets.delete([@jerry.x, @jerry.y])
         if @targets.empty? then @jerry.won = true end
       elsif @board[@jerry.y][@jerry.x] == '#' then @invalid = true
       end
