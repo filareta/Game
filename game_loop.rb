@@ -25,7 +25,7 @@ module TomAndJerry
           end
         end
         return if game.over
-        if Configurations::MAPS.empty?
+        if game.won
           puts "Congratulations! You win!"
           return
         end
