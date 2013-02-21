@@ -5,12 +5,13 @@ require './tests/test_game'
 module TomAndJerry
 
   class ConsoleGame
-    attr_accessor :playground, :level, :over
+    attr_accessor :playground, :level, :over, :won
 
     def initialize(playground, level, over)
       @playground = playground
       @level = level
       @over = over
+      @won = false
     end
 
     def self.init_game(file_map, lives_left = Configurations::LIVES, current_score = 0)
@@ -66,8 +67,14 @@ module TomAndJerry
         puts "You have #{board.jerry.lives} more lives!"
         ConsoleGame.init_game(Configurations::MAPS[level - 1], board.jerry.lives, board.jerry.score)
       elsif board.jerry.won
-        puts "Next level!"
-        ConsoleGame.init_game(Configurations::MAPS[level], board.jerry.lives, board.jerry.score)
+        if level == Configurations::LEVELS_NUMBER
+          game = ConsoleGame.init_game(Configurations::MAPS[level - 1], board.jerry.lives, board.jerry.score)
+          game.won = true
+          return game
+        else
+          puts "Next level!"
+          ConsoleGame.init_game(Configurations::MAPS[level], board.jerry.lives, board.jerry.score)
+        end
       else
         ConsoleGame.new(board, @level, false)
       end
