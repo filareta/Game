@@ -232,15 +232,6 @@ module TomAndJerry
     end
 
     def update(event, game, player)
-      case event
-      when KeyDownEvent
-        case event.key
-        when K_RSHIFT
-          game = load(Configurations::MAPS[0])
-          set_enemies(game.enemies)
-          set_player(game.player)
-        end
-      end
       if player.won
         if game.level == Configurations::LEVELS_NUMBER
           game.won = true
@@ -253,6 +244,15 @@ module TomAndJerry
         game = load(Configurations::MAPS[game.level - 1], player.lives, player.score)
         set_enemies(game.enemies)
         set_player(game.player)
+      end
+      case event
+      when KeyDownEvent
+        case event.key
+        when K_RSHIFT
+          game = load(Configurations::MAPS[0])
+          set_enemies(game.enemies)
+          set_player(game.player)
+        end
       end
       game
     end
